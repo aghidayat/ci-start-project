@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^brembrem.com [NC]
+RewriteRule ^(.*)$ https://www.brembrem.com/$1 [L,R=301]
+
+RewriteCond %{ENV:REDIRECT_APP_PATH} !^$
+RewriteRule ^(.*)$ - [E=APP_PATH:%{ENV:REDIRECT_APP_PATH}]
+RewriteCond %{ENV:APP_PATH} ^$
+RewriteRule ^(.*)$ - [E=APP_PATH:/$1]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+</IfModule>

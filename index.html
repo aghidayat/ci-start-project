@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ci-start-project</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron text-center">
+		  <h1>CI Start Project</h1><br>
+		  <p><a target="_blank" class="btn btn-primary btn-lg" href="https://github.com/aghidayat/aghidayat.github.io/tree/master/ci-start-project">Download</a></p>
+		</div>
+
+		<div class="panel panel-default">
+		  <div class="panel-heading">Perkenalan</div>
+		  <div class="panel-body">
+		    ci-start-project adalah sebuah tool untuk memulai aplikasi yang akan dibuat.		    
+		  </div>
+		</div>
+
+		<div class="panel panel-default">
+		  <div class="panel-heading">Keunggulan</div>
+		  <div class="panel-body">
+		    <ul>
+		    	<li>Template Library</li>
+		    	<li>Web Settings (ex : project title)</li>
+		    	<li>GULP (kamu harus install gulp terlebih dahulu)</li>
+		    	<li>Simple Code</li>
+		    	<li>Pitisan</li>
+		    	<li>CRUD Generator by Harviacode (https://bitbucket.org/harviacode/codeigniter-crud-generator)</li>
+		    	<li>HMVC</li>
+		    </ul>
+		  </div>
+		</div>
+
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Yuk Mulai!</h3>
+		  </div>
+		  <div class="panel-body">
+		  	<ul style="list-style:none;">
+		  		<li>1. Download terlebih dahulu <a target="_blank" href="https://github.com/aghidayat/aghidayat.github.io/tree/master/ci-start-project">ci-start-project</a>
+		  		kemudian simpan di folder projek anda.
+		  		</li>
+		  		<li>
+		  			2. Buka file autoload.php di folder config/autoload.php <br>
+		  			<p>
+<pre>
+$autoload['libraries'] = array();
+ubah menjadi
+$autoload['libraries'] = array('template');
+
+$autoload['helper'] = array();
+ubah menjadi
+$autoload['helper'] = array('url','my');
+
+$autoload['config'] = array();
+ubah menjadi
+$autoload['config'] = array('site_config');
+</pre>
+		  			</p>
+		  		</li>
+		  		<li>
+		  			3. Buka file config.php di folder config/config.php <br>
+		  			<p>
+<pre>
+$config['base_url'] = '';
+ubah menjadi
+$config['base_url'] = 'http://localhost/ci-start-project/';	// sesuaikan dengan lokasi folder projek anda
+</pre>		  				
+		  			</p>
+		  		</li>
+		  		<li>
+		  			4. Buka file routes.php di folder config/routes.php
+		  			<p>
+<pre>
+Tambahkan baris code berikut
+$route['default_controller'] = 'home';
+$route['profile'] = 'home/profile'; // ini hanya sebagai contoh merender page profile
+$route['about'] = 'home/about';	// ini hanya sebagai contoh merender page about
+</pre>		  				
+		  			</p>
+		  		</li>
+		  		<li>
+		  		5. Untuk merubah title web anda, silahkan ubah file site_config.php di folder config/site_config.php <br>
+		  		<p>
+<pre>
+$config['site_name'] = 'Your Project'; // ubah nama projek kamu
+$config['site_title'] = "Your Project";	 // ubah title projek kamu
+</pre>		  			
+		  		</p>
+		  		</li>
+		  		<li>6. Sampai langkah ini ci-start-project sudah dapat di gunakan. Selanjutnya saya akan menjelaskan fitur yang ada lainnya</li>
+		  		<li>7. Theme template<br>
+		  		<p>
+<pre>
+Untuk mengubah theme atau struktur layout anda dapat merubahnya disini:
+-libraries/Frontend_Controller.php
+-themes/default_theme/views/layouts/default.php //template index
+-views/partials/ //partials include (header,footer,navigation)
+</pre>		  			
+		  		</p>
+		  		</li>
+		  		<li>8. Controller<br>
+		  		<p>
+<pre>
+class Home extends Frontend_Controller {
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->theme();		
+	}
+
+	public function index(){
+		$data = array();
+
+		web_title('Home'); // set title web
+		web_build('home', $data); // build view
+	}
+}
+</pre>		  			
+		  		</p>
+		  		</li>
+		  		<li>9. Pitisan <a target="_blank" href="https://github.com/piece601/Codeigniter-Pitisan">https://github.com/piece601/Codeigniter-Pitisan</a> (optional)</li>
+		  		<li>10. Gulp (Anda harus menginstal gulp terlebih dahulu) <br>
+		  		<p>
+<pre>
+untuk menginstall nya menggunakan cmd/terminal
+1. masuk ke directory project anda
+2. lakukan perintah npm install --save-dev gulp gulp-concat
+*untuk lebih lengkapnya silahkan kunjungin situs <a href="http://gulpjs.com/">gulp</a>
+</pre>		  			
+		  		</p>
+		  		</li>
+		  		<li>11. Simple Send Email <br>
+		  		<p>
+<pre>
+code yang sangat simple untuk mengirim email adalah berikut :
+send_email($to, $subject, $data, 'file');
+
+untuk settingan nya terdapat di file helpers/my_helper.php (silahkan explore lagi)
+</pre>		  			
+		  		</p>
+		  		</li>
+		  	</ul>		    
+		  </div>
+		</div>
+
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Saran & kritik</h3>
+		  </div>
+		  <div class="panel-body">
+		    Berikan saya saran atau kritik yang membangun yaaa hehe, semoga bermanfaat :) . Jika ada yang ingin ditanyakan silahkan melaluui kontak dibawah :)
+		  </div>
+		</div>
+
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Kontak</h3>
+		  </div>
+		  <div class="panel-body">
+		  	Mohon maaf apabila terdapat banyak kesalahan, kamu dapat menghubungi saya dibawah ini : <br><br>
+		    <a href="mailto:adigunawanhidayat29@gmail.com">Email : adigunawanhidayat29@gmail.com</a><br>
+		    <a target="_blank" href="https://www.facebook.com/aghidayat">Facebook - Adi Gunawan Hidayat</a><br>
+		    <a target="_blank" href="https://twitter.com/adigunawanh">Twitter - @adigunawanh</a><br>
+		    <a target="_blank" href="aghidayat.github.io">Github - aghidayat</a><br>
+		  </div>
+		</div>
+	</div>	
+</body>
+</html>
